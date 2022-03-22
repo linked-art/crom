@@ -781,7 +781,7 @@ class BaseResource(ExternalResource):
 		 
 	def _check_prop(self, which, value):
 		val_props = self._factory.validate_properties
-		val_profile = self._factory.validate_profile
+		val_profile = self._factory.validate_profile and getattr(self, '_validate_profile', True)
 		val_range = self._factory.validate_range
 		for c in self._classhier:
 			if which in c._all_properties:
