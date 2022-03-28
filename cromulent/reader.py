@@ -6,12 +6,13 @@ import json
 
 class Reader(object):
 
-	def __init__(self):
+	def __init__(self, validate_props=True, validate_profile=True):
 		self.uri_object_map = {}
 		self.forward_refs = []
 		self.vocab_props = ['assigned_property']
 		self.vocab_classes = {}
-		self.validate_props = True
+		self.validate_profile = validate_profile
+		self.validate_props = validate_props
 
 		for cx in dir(vocab):
 			what = getattr(vocab, cx)
@@ -84,6 +85,7 @@ class Reader(object):
 					break
 
 		what = clx(ident=ident)
+		what._validate_profile = self.validate_profile
 		self.uri_object_map[ident] = what
 
 		if self.validate_props:
