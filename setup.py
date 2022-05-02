@@ -1,10 +1,7 @@
 from setuptools import setup
 import sys
 
-if (sys.version_info[0:2] < (2,7)):
-    install_requires =['ordereddict', 'future', 'rdflib', 'PyLD']
-else:
-    install_requires = ['rdflib', 'PyLD']
+install_requires = ['rdflib', 'PyLD']
 
 setup(
     name = 'cromulent',
@@ -15,7 +12,7 @@ setup(
         'data/cidoc-extension.json', 'data/crm-profile.json']
     },
     test_suite="tests",
-    version = '0.16.11',
+    version = '0.17.1',
     description = 'A library for mapping CIDOC-CRM (v7.1) classes to Python objects',
     author = 'Rob Sanderson',
     author_email = 'robert.sanderson@yale.edu',
@@ -24,7 +21,6 @@ setup(
     classifiers = [
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 2",
         "License :: OSI Approved :: Apache Software License",
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
