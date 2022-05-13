@@ -447,7 +447,7 @@ def extract_monetary_amount(data, add_citations=False, currency_mapping=CURRENCY
 	elif 'est_price' in data or 'est_price_amount' in data:
 		amnt = vocab.EstimatedPrice(ident='')
 		price_amount = data.get('est_price_amount', data.get('est_price'))
-		price_currency = data.get('currency', data.get('est_price_currency', data.get('est_price_curr')))
+		price_currency = data.get('est_price_currency', data.get('est_price_curr', data.get('currency')))
 		amount_type = 'Estimated Price'
 		note = data.get('est_price_note', data.get('est_price_desc', data.get('note')))
 		cite = data.get('est_price_citation', data.get('citation'))
@@ -455,11 +455,19 @@ def extract_monetary_amount(data, add_citations=False, currency_mapping=CURRENCY
 	elif 'start_price' in data or 'start_price_amount' in data:
 		amnt = vocab.StartingPrice(ident='')
 		price_amount = data.get('start_price_amount', data.get('start_price'))
-		price_currency = data.get('currency', data.get('start_price_currency', data.get('start_price_curr')))
+		price_currency = data.get('start_price_currency', data.get('start_price_curr', data.get('currency')))
 		amount_type = 'Starting Price'
 		note = data.get('start_price_note', data.get('start_price_desc', data.get('note')))
 		cite = data.get('start_price_citation', data.get('citation'))
 		source = data.get('start_price_source', data.get('start_price_so', ''))
+	elif 'ask_price' in data or 'ask_price_amount' in data:
+		amnt = vocab.AskingPrice(ident='')
+		price_amount = data.get('ask_price_amount', data.get('ask_price'))
+		price_currency = data.get('ask_price_currency', data.get('ask_price_curr', data.get('currency')))
+		amount_type = 'Asking Price'
+		note = data.get('ask_price_note', data.get('ask_price_desc', data.get('note')))
+		cite = data.get('ask_price_citation', data.get('citation'))
+		source = data.get('ask_price_source', data.get('ask_price_so', ''))
 	else:
 		return None
 
