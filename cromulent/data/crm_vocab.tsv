@@ -405,11 +405,12 @@ la:Phase	class	Phase	Phase	The period of time during which an entity is in a cer
 la:Set	class	Set	Set		E89_Propositional_Object|E72_Legal_Object	1
 la:Addition	class	Addition	Addition	The addition of some entity to a Set	E7_Activity	1
 la:Removal	class	Removal	Removal	The removal of some entity from a Set	E7_Activity	1
-la:DigitalService	class	DigitalService	Digital Service		dig:D1_Digital_Object	1
+la:DigitalService	class	DigitalService	Digital Service		http://www.ics.forth.gr/isl/CRMdig/D1_Digital_Object	1
 la:property_classified_as	property	property_classified_as	Property Classified As	Record dot one properties via Attribute Assignments		E13_Attribute_Assignment	E55_Type		10000	1	1
 la:current_permanent_custodian	property	current_permanent_custodian	Current Permanent Custodian	This property records the normal custodian of the object at the time when the assertion was made. The object may have a temporary custodian, for example when it is loaned to another organization for an exhibition or between departments for conservation or storage.		E19_Physical_Object	E39_Actor	la:current_permanent_custodian_of	10000	1	0
 la:current_permanent_custodian_of	property	current_permanent_custodian_of	Current Permanent Custodian Of	Inverse of Current Permanent Custodian		E39_Actor	E19_Physical_Object	la:current_permanent_custodian	10000	1	1
 la:equivalent	property	equivalent	has equivalent instance	Similar to skos:exactMatch, the referenced entity is an equivalent instance to the referencing entity. This would not have the same inference issue as exactMatch, whereby the domain and range become skos:Concept, which is equivalent to E55_Type ... and thus everything becomes a Type.		E1_CRM_Entity	E1_CRM_Entity		10000	1	1
+la:occurs_during	property	occurs_during	occurs during	This property allows the entire E52 Time-Span of an E2 Temporal Entity to be situated within the Time-Span of another temporal entity that starts before and ends after the included temporal entity. This used to be P117 in base, but was removed to Archaeo ... which has not yet been updated.		E2_Temporal_Entity	E2_Temporal_Entity		10000	1	1
 la:paid_amount	property	paid_amount	Paid Amount	The amount paid.		la:Payment	E97_Monetary_Amount		50	1	0
 la:paid_from	property	paid_from	Paid From	Who the payment came from		la:Payment	E39_Actor		51	1	1
 la:paid_to	property	paid_to	Paid To	Who the payment went to		la:Payment	E39_Actor		52	1	1

@@ -43,6 +43,14 @@
     <rdfs:range rdf:resource="E1_CRM_Entity"/>
 </rdf:Property>
 
+<!-- occurs_during, until CRMArchaeo is updated -->
+
+<rdf:Property rdf:about="https://linked.art/ns/terms/occurs_during">
+    <rdfs:label xml:lang="en">occurs during</rdfs:label>
+    <rdfs:comment xml:lang="en">This property allows the entire E52 Time-Span of an E2 Temporal Entity to be situated within the Time-Span of another temporal entity that starts before and ends after the included temporal entity. This used to be P117 in base, but was removed to Archaeo ... which has not yet been updated.</rdfs:comment>
+    <rdfs:domain rdf:resource="E2_Temporal_Entity"/>
+    <rdfs:range rdf:resource="E2_Temporal_Entity"/>
+</rdf:Property>
 
 <!-- Many of these will go to CRM SOC in the future, hopefully -->
 
@@ -299,6 +307,7 @@
     <rdfs:range rdf:resource="https://linked.art/ns/terms/Removal"/>
     <owl:inverseOf rdf:resource="https://linked.art/ns/terms/removed_member"/>
 </rdf:Property>
+
 
 
 <!-- Temporary (ish) digital relationships until update of CRMDig -->

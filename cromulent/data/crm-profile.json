@@ -412,6 +412,7 @@
   "P199_represents_instance_of_type": [1,1],
   "P199i_has_instance_represented_by":[1,1],
 
+  "la:occurs_during": [1,1], 
   "la:paid_amount": [1,0], 
   "la:paid_from": [1,1], 
   "la:paid_to": [1,1],

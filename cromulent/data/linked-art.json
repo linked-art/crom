@@ -2653,6 +2653,11 @@
       "@type": "@id",
       "@container": "@set"
     },
+    "occurs_during": {
+      "@id": "la:occurs_during",
+      "@type": "@id",
+      "@container": "@set"
+    },
     "paid_amount": {
       "@id": "la:paid_amount",
       "@type": "@id"
