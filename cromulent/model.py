@@ -806,7 +806,7 @@ class BaseResource(ExternalResource):
 					elif isinstance(value, rng):
 						return 2
 					else:
-						raise DataError("Can't set '%s' on resource of type '%s' to '%r'" % (which, self._type, value), self)
+						raise DataError("Can't set '%s' on resource of type '%s' to '%r'; must be '%s'" % (which, self._type, value, rng), self)
 				# Found it, but not validating range and either okay or not validating profile
 				return 1
 		if val_props:
@@ -1014,7 +1014,7 @@ change factory.multiple_instances_per_property to 'drop' or 'allow'""")
 
 			for (k,v) in d.items():
 				# look up the rdf predicate in _properties
-				for c in reversed(self._classhier):
+				for c in self._classhier:
 					if k in c._all_properties:
 						nk = c._all_properties[k].predicate
 						nd[nk] = v
