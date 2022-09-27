@@ -438,6 +438,27 @@ class TestBaseResource(unittest.TestCase):
 		props = dir(self.artist)
 		self.assertTrue('identified_by' in props)
 
+	def test_fullNames(self):
+		p1 = model.Person()
+		p1.identified_by = model.Name(content="Test")
+		g1 = model.Group()
+		p1.member_of = g1
+
+		model.factory.full_names = True
+		js = model.factory.toJSON(p1)
+		self.assertTrue('crm:P107i_is_current_or_former_member_of' in list(js.keys()))
+		self.assertTrue('crm:P1_is_identified_by' in list(js.keys()))
+
+		i1 = model.HumanMadeObject()
+		s1 = model.Set()
+		i1.member_of = s1
+		js = model.factory.toJSON(i1)
+		self.assertTrue('la:member_of' in list(js.keys()))
+
+		model.factory.full_names = False
+
+
+
 
 class TestPropertyCache(unittest.TestCase):
 
