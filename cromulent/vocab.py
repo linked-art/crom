@@ -589,11 +589,11 @@ identity_instances = {
 
 	# Additional classifications for visual content
 	"allusion": {"parent": Type, "id":"300055815", "label":"Allusion"},
-	"allegory": {"parent": Type, "id":"300055866", "label":"Allegory"}
+	"allegory": {"parent": Type, "id":"300055866", "label":"Allegory"},
 	"content genre": {"parent": Type, "id":"300139140", "label": "Genre"},
 	"content landscape": {"parent": Type, "id":"300015636", "label": "Landscape"},
 	"content portrait": {"parent": Type, "id":"300015637", "label": "Portrait"},
-	"content still life": {"parent": Type, "id":"300015638", "label": "Still Life"},
+	"content still life": {"parent": Type, "id":"300015638", "label": "Still Life"}
 
 }
 
