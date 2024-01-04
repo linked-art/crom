@@ -3,6 +3,7 @@ from cromulent.model import factory, DataError, OrderedDict, BaseResource
 from cromulent.model import STR_TYPES
 
 import json
+import requests
 
 class Reader(object):
 
@@ -144,3 +145,49 @@ class Reader(object):
 		return what
 
 
+class NetworkedReader(Reader):
+	# Read in data over the network, given a URI or JSON
+	# Then traverse to n hops
+
+
+	def __init__(self, validate_props=True, validate_profile=True):	
+		Reader.__init__(self, validate_props, validate_profile)
+		self.distances = {}
+		self.results = {}
+		self.ignore_props = ['access_point']
+
+
+	def walk_for_refs(self, what, distance):
+		props = what.list_my_props()
+		if what.id and what.id.startswith('http') and not what.id in self.distances:
+			self.distances[what.id] = distance
+		for p in props:
+			if not p in self.ignore_props:
+				val = getattr(what, p)
+				if isinstance(val, BaseResource):
+					# walk
+					self.walk_for_refs(val, distance)
+				elif type(val) == list:
+					for v in val:
+						if isinstance(v, BaseResource):
+							# walk
+							self.walk_for_refs(v, distance)
+
+	def read(self, data, hops=0):
+		if type(data) in STR_TYPES and (data.startswith('http://') or \
+				data.startswith('https://')):
+			try:
+				resp = requests.get(data)
+				data = resp.json()				
+			except:
+				return DataError("Detected URI, but no data available")
+		result = Reader.read(self, data)
+		if hops:
+			self.results[result.id] = result
+			self.walk_for_refs(result, distance=hops-1)
+			for uri in self.distances.keys():
+				if not uri in self.results:
+					self.read(uri, hops=hops-1)
+		else:
+			self.results[result.id] = result			
+		return result

@@ -88,6 +88,7 @@ ext_classes = {
 
 	"DigitalImage": {"parent": DigitalObject, "id": "300215302", "label": "Digital Image"},
 	"WebPage": {"parent": DigitalObject, "id":"300264578", "label": "Web Page"},
+	"DigitalAudio": {"parent": DigitalObject, "id": "300312045", "label": "Digital Audio"},
 
 	"OwnershipRight": {"parent": Right, "id":"300055603", "label": "Ownership Right"},
 	"CustodyRight": {"parent": Right, "id":"300411616", "label": "Custody Right"},
@@ -589,6 +590,10 @@ identity_instances = {
 	# Additional classifications for visual content
 	"allusion": {"parent": Type, "id":"300055815", "label":"Allusion"},
 	"allegory": {"parent": Type, "id":"300055866", "label":"Allegory"}
+	"content genre": {"parent": Type, "id":"300139140", "label": "Genre"},
+	"content landscape": {"parent": Type, "id":"300015636", "label": "Landscape"},
+	"content portrait": {"parent": Type, "id":"300015637", "label": "Portrait"},
+	"content still life": {"parent": Type, "id":"300015638", "label": "Still Life"},
 
 }
 
@@ -657,10 +662,6 @@ local_instances = {
 	"arched": {"parent": Shape, "id":"300126995", "label": "Arched"},
 
 	# Styles
-	"style genre": {"parent": Style, "id":"300139140", "label": "Genre"},
-	"style landscape": {"parent": Style, "id":"300015636", "label": "Landscape"},
-	"style portrait": {"parent": Style, "id":"300015637", "label": "Portrait"},
-	"style still life": {"parent": Style, "id":"300015638", "label": "Still Life"},
 	"style impressionism": {"parent": Style, "id":"300021503", "label": "Impressionism"},
 
 	# Genders / Biological Sexes

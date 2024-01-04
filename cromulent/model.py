@@ -18,8 +18,6 @@ from rdflib import ConjunctiveGraph
 KEY_ORDER_DEFAULT = 10000
 LINKED_ART_CONTEXT_URI = "https://linked.art/ns/v1/linked-art.json"
 
-# 2.5 and 2.6 are very out of date. Assume 2.7 or better
-
 try:
 	STR_TYPES = [str, unicode] #Py2.7
 	FILE_STREAM_CLASS = file
@@ -385,7 +383,7 @@ class CromulentFactory(object):
 				out.append(l)
 		out.append(l)
 		return out
-
+ 
 	def collapse_json(self, text, collapse):
 		return '\n'.join(self._collapse_json(text, collapse))
 
@@ -948,7 +946,7 @@ change factory.multiple_instances_per_property to 'drop' or 'allow'""")
 		for (k, v) in kvs:
 			# some _foo might be carried through, eg _label or _comment
 			k = self._property_name_map.get(k, k)
-			if not v or (k[0] == "_" and not k in self._factory.underscore_properties):
+			if (not v and v is not False) or (k[0] == "_" and not k in self._factory.underscore_properties):
 				del d[k]
 			else:
 				if isinstance(v, ExternalResource):
