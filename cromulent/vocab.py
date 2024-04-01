@@ -220,6 +220,7 @@ ext_classes = {
 	"Organization":{"parent": Group, 'id':'300025948', 'label':"Organization"}, 
 
 	"Nationality": {"parent": Type, "id":"300379842", "label": "Nationality"},
+	"Ethnicity":   {"parent": Type, "id":"300250435", "label": "Ethnicity"},
 	"Gender":      {"parent": Type, "id":"300055147", "label": "Gender"},
 	"Occupation":  {"parent": Type, "id":"300263369", "label": "Occupation"},
 	"Shape":       {"parent": Type, "id":"300056273", "label": "Shape"},
