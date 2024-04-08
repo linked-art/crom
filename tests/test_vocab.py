@@ -47,14 +47,14 @@ class TestClassBuilder(unittest.TestCase):
 		r = model.Right()
 		r2 = model.Right()
 		self.assertRaises(model.DataError, r.__setattr__, 'part', r2)
-		r.c_part = r2
-		self.assertTrue(r2 in r.c_part)
+		r.conceptual_part = r2
+		self.assertTrue(r2 in r.conceptual_part)
 
 		vocab.conceptual_only_parts()
 		r3 = model.Right()
 		r4 = model.Right()
 		r3.part = r4
-		self.assertTrue(r4 in r3.c_part)
+		self.assertTrue(r4 in r3.conceptual_part)
 		self.assertTrue("part" in model.factory.toJSON(r3))
 		self.assertTrue(r4 in r3.part)
 
@@ -87,7 +87,7 @@ class TestClassBuilder(unittest.TestCase):
 		aa.assigned_property = None
 		aa.assigned = aa
 		aa.assigned_to = aa
-		self.assertEqual(aa.assigned, aa)
+		self.assertEqual(aa.assigned[0], aa)
 		self.assertEqual(aa.assigned_to, aa)
 
 		vocab.add_attribute_assignment_check()
@@ -109,14 +109,14 @@ class TestClassBuilder(unittest.TestCase):
 		n = model.Name()
 		n.content = "Test"
 		p2.identified_by = n
-		p.exact_match = p2
+		p.equivalent = p2
 		# Now, Test should not appear in the resulting JSON of p
 		factory.linked_art_boundaries = True
 		js = factory.toJSON(p)
-		self.assertTrue(not 'identified_by' in js['exact_match'][0])
+		self.assertTrue(not 'identified_by' in js['equivalent'][0])
 		factory.linked_art_boundaries = False
 		js = factory.toJSON(p)
-		self.assertTrue('identified_by' in js['exact_match'][0])		
+		self.assertTrue('identified_by' in js['equivalent'][0])		
 
 	def test_procurement_boundary(self):
 		vocab.add_linked_art_boundary_check()

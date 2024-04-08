@@ -2,11 +2,27 @@
 
 <rdf:RDF xml:lang="en" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xml:base="http://www.cidoc-crm.org/cidoc-crm/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:la="https://linked.art/ns/terms/" xmlns:schema="http://schema.org/" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:ore="http://www.openarchives.org/ore/terms/" xmlns:geo="http://www.ics.forth.gr/isl/CRMgeo/" xmlns:sci="http://www.ics.forth.gr/isl/CRMsci/" xmlns:dig="http://www.ics.forth.gr/isl/CRMdig/" xmlns:archaeo="http://www.cidoc-crm.org/cidoc-crm/CRMarchaeo/">
 
+<!-- Import Dig's Digital Object -->
     <rdfs:Class rdf:about="http://www.ics.forth.gr/isl/CRMdig/D1_Digital_Object">
         <rdfs:label xml:lang="en">Digital Object</rdfs:label>
         <rdfs:comment>This class comprises identifiable immaterial items that can be represented as sets of bit sequences, such as data sets, e-texts, images, audio or video items, software, etc., and are documented as single units. Any aggregation of instances of D1 Digital Object into a whole treated as single unit is also regarded as an instance of D1 Digital Object.  This means that for instance, the content of a DVD, an XML file on it, and an element of this file, are regarded as distinct instances of D1 Digital Object, mutually related by the P106 is composed of (forms part of) property. A D1 Digital Object does not depend on a specific physical carrier, and it can exist on one or more carriers simultaneously.</rdfs:comment>
         <rdfs:subClassOf rdf:resource="E73_Information_Object"/>
     </rdfs:Class>
+
+
+
+<!-- occurs_during ... if actually needed -->
+
+<!--
+<rdf:Property rdf:about="http://www.cidoc-crm.org/cidoc-crm/CRMarchaeo/AP25_occurs_during">
+  <rdfs:label xml:lang="en">occurs during</rdfs:label>
+  <rdfs:comment>This property identifies a situation in which the entire instance of the E52 Time-Span of an instance of E2 Temporal Entity is within the instance of the E52 Time-Span of another instance of E2 Temporal Entity that starts before and ends after the included temporal entity.</rdfs:comment>
+  <rdfs:domain rdf:resource="E2_Temporal_Entity"/>
+  <rdfs:range rdf:resource="E2_Temporal_Entity"/>
+</rdf:Property>
+-->
+
+<!-- Causal relationship between events -->
 
     <rdf:Property rdf:about="http://www.ics.forth.gr/isl/CRMsci/O13_triggers">
         <rdfs:label xml:lang="en">triggers</rdfs:label>
@@ -22,6 +38,7 @@
         <owl:inverseOf rdf:resource="http://www.ics.forth.gr/isl/CRMsci/O13_triggers" />     
     </rdf:Property>
 
+<!-- Encounter for discoveries -->
 
   <rdfs:Class rdf:about="http://www.ics.forth.gr/isl/CRMsci/S19_Encounter_Event">
     <rdfs:label xml:lang="en">Encounter</rdfs:label>
@@ -48,15 +65,6 @@ Thing that has been found. e.g. The finding (S19) encountered (O19) the 18 arrow
     </rdf:Property>
 
 
-<!-- Moved from CRM base in 7.0 but still useful! -->
-<rdf:Property rdf:about="http://www.cidoc-crm.org/cidoc-crm/CRMarchaeo/AP25_occurs_during">
-  <rdfs:label xml:lang="en">occurs during</rdfs:label>
-  <rdfs:comment>This property identifies a situation in which the entire instance of the E52 Time-Span of an instance of E2 Temporal Entity is within the instance of the E52 Time-Span of another instance of E2 Temporal Entity that starts before and ends after the included temporal entity.</rdfs:comment>
-  <rdfs:domain rdf:resource="E2_Temporal_Entity"/>
-  <rdfs:range rdf:resource="E2_Temporal_Entity"/>
-</rdf:Property>
-
-
 <!-- These redefine external classes and properties in relation to CRM -->
 <!-- All care has been taken in this mapping to avoid introducing semantics -->
 <!-- where non existed previously -->
@@ -70,26 +78,13 @@ Thing that has been found. e.g. The finding (S19) encountered (O19) the 18 arrow
   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 </rdf:Property>
 
+
 <!-- Similarity of resources -->
 <!-- E1: skos:exactMatch, skos:closeMatch -->
 <!-- owl:sameAs considered too dangerous, dct:relation considered too pointless -->
-<!-- exactMatch / closeMatch should only be used between E55_Type in CRM, but usage is not restricted -->
-<!-- This allows adopters to assert that a person is exactMatch to a ulan entry -->
-<!-- But see la:equivalent for a local but semantically better option -->
+<!-- owl:exactMatch is dangerous in CRM due to Concept/Type conflation -->
+<!-- Instead, just use la:equivalent -->
 
-<rdf:Property rdf:about="http://www.w3.org/2004/02/skos/core#exactMatch">
-        <rdfs:label xml:lang="en">exactMatch</rdfs:label>
-        <rdfs:comment xml:lang="en">Exact Match, not quite sameAs, good for most uses</rdfs:comment>
-        <rdfs:domain rdf:resource="E1_CRM_Entity"/>
-        <rdfs:range rdf:resource="E1_CRM_Entity"/>
-</rdf:Property>
-
-<rdf:Property rdf:about="http://www.w3.org/2004/02/skos/core#closeMatch">
-        <rdfs:label xml:lang="en">closeMatch</rdfs:label>
-        <rdfs:comment xml:lang="en">Close Match, good for some uses</rdfs:comment>
-        <rdfs:domain rdf:resource="E1_CRM_Entity"/>
-        <rdfs:range rdf:resource="E1_CRM_Entity"/>
-</rdf:Property>
 
 <!-- These replace P127 / P127i -->
 
@@ -110,44 +105,6 @@ Thing that has been found. e.g. The finding (S19) encountered (O19) the 18 arrow
 </rdf:Property>
 
 
-<!-- And SKOS / CRM equivalences -->
-
-<rdf:Property rdf:about="http://www.w3.org/2004/02/skos/core#hasTopConcept">
-        <rdfs:label xml:lang="en">has top concept</rdfs:label>
-        <rdfs:comment xml:lang="en"></rdfs:comment>
-        <rdfs:domain rdf:resource="E32_Authority_Document"/>
-        <rdfs:range rdf:resource="E55_Type"/>
-        <owl:inverseOf rdf:resource="http://www.w3.org/2004/02/skos/core#topConceptOf"/>
-</rdf:Property>
-
-
-<rdf:Property rdf:about="http://www.w3.org/2004/02/skos/core#topConceptOf">
-        <rdfs:label xml:lang="en">is top concept of</rdfs:label>
-        <rdfs:comment xml:lang="en"></rdfs:comment>
-        <rdfs:domain rdf:resource="E55_Type"/>
-        <rdfs:range rdf:resource="E32_Authority_Document"/>
-        <owl:inverseOf rdf:resource="http://www.w3.org/2004/02/skos/core#hasTopConcept"/>
-</rdf:Property>
-
-  <rdf:Property rdf:about="http://www.w3.org/2004/02/skos/core#inScheme">
-    <rdfs:label xml:lang="en">is in scheme</rdfs:label>
-    <rdfs:comment xml:lang="en">Relates a resource (for example a concept) to a concept scheme in which it is included.</rdfs:comment>
-    <skos:scopeNote xml:lang="en">A concept may be a member of more than one concept scheme.</skos:scopeNote>
-    <rdfs:domain rdf:resource="E55_Type"/>
-    <rdfs:range rdf:resource="E32_Authority_Document"/>
-  </rdf:Property>
-
-<!-- SeeAlso to other descriptions -->
-
-
-<rdf:Property rdf:about="http://www.w3.org/2000/01/rdf-schema#seeAlso">
-        <rdfs:label xml:lang="en">seeAlso</rdfs:label>
-        <rdfs:comment xml:lang="en">A related resource, that is machine readable and related to the current resource.</rdfs:comment>
-        <rdfs:domain rdf:resource="E1_CRM_Entity"/>
-        <rdfs:range rdf:resource="E73_Information_Object"/>
-</rdf:Property>
-
-
 <!-- Conformance of an object to a standard -->
 
 <rdf:Property rdf:about="http://purl.org/dc/terms/conformsTo">
@@ -165,5 +122,6 @@ Thing that has been found. e.g. The finding (S19) encountered (O19) the 18 arrow
         <rdfs:domain rdf:resource="E73_Information_Object"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 </rdf:Property>
+
 
 </rdf:RDF>

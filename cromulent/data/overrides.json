@@ -31,8 +31,8 @@
 	"P127i": "part",
 	"P127": "part_of",
 
-	"P148": "c_part",
-	"P148i": "c_part_of",
+	"P148": "conceptual_part",
+	"P148i": "conceptually_part_of",
 
 	"P107":  "member",
 	"P107i": "member_of",
@@ -69,12 +69,8 @@
 	"P195i": "thing_presence",
 	"P196i": "thing_defined_by",
 
-	"skos:closeMatch": "close_match",
-	"skos:exactMatch": "exact_match",
 	"dcterms:conformsTo": "conforms_to",
 	"dcterms:relation": "related",
-	"schema:genre": "style",
-	"rdfs:seeAlso": "see_also",
 	"rdfs:label": "_label",
 	"sci:O13_triggers": "caused",
 	"sci:O13i_is_triggered_by": "caused_by",
