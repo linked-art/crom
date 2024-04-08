@@ -77,6 +77,7 @@ ext_classes = {
 	"IssueNumber": {"parent": Identifier, "id": "300312349", "label": "Issue"},
 	"CallNumber": {"parent": Identifier, "id": "300311706", "label": "Call Number"},
 	"StockNumber": {"parent": Identifier, "id": "300412177", "label": "Stock Number"},
+	"SortValue": {"parent": Identifier, "id": "300456575", "label": "Sort Value"},
 	
 	"EmailAddress": {"parent": Identifier, "id":"300435686", "label": "Email Address"},
 	"StreetAddress": {"parent": Identifier, "id":"300386983", "label": "Street Address"},
