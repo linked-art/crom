@@ -408,8 +408,10 @@ la:paid_from	property	paid_from	Paid From	Who the payment came from		la:Payment	
 la:paid_to	property	paid_to	Paid To	Who the payment went to		la:Payment	E39_Actor		52	1	1
 la:lang_code	property	lang_code	language code	BCP 47 code for the language		E56_Language	xsd:string		10000	1	0
 la:has_member	property	member	has member			la:Set	E1_CRM_Entity	la:member_of	10001	1	1
-la:members_exemplified_by	property	members_exemplified_by	members exemplified by			la:Set	E1_CRM_Entity		10000	1	1
 la:member_of	property	member_of	member of			E1_CRM_Entity	la:Set	la:has_member	45	1	1
+la:members_exemplified_by	property	members_exemplified_by	members exemplified by			la:Set	E1_CRM_Entity		10000	1	1
+la:members_contained_by	property	members_contained_by	members contained by			la:Set	E18_Physical_Thing	la:contains_members_of	10000	1	1
+la:contains_members_of	property	contains_members_of	contains members of			E18_Physical_Thing	la:Set	la:members_contained_by	10000	1	1
 la:added_to	property	added_to	added to			la:Addition	la:Set	la:added_to_by	10000	1	0
 la:added_to_by	property	added_to_by	added to by			la:Set	la:Addition	la:added_to	10000	1	1
 la:added_member	property	added_member	added			la:Addition	E1_CRM_Entity	la:added_member_by	10000	1	0

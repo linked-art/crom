@@ -2640,6 +2640,16 @@
       "@type": "@id",
       "@container": "@set"
     },
+    "members_contained_by": {
+      "@id": "la:members_contained_by",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "contains_members_of": {
+      "@id": "la:contains_members_of",
+      "@type": "@id",
+      "@container": "@set"
+    },
     "added_to": {
       "@id": "la:added_to",
       "@type": "@id"

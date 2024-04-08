@@ -103,6 +103,14 @@
     <owl:inverseOf rdf:resource="https://linked.art/ns/terms/member_of"/>
 </rdf:Property>
 
+<rdf:Property rdf:about="https://linked.art/ns/terms/member_of">
+    <rdfs:label xml:lang="en">member of</rdfs:label>
+    <rdfs:comment xml:lang="en"></rdfs:comment>
+    <rdfs:domain rdf:resource="E1_CRM_Entity"/>
+    <rdfs:range rdf:resource="https://linked.art/ns/terms/Set"/>
+    <owl:inverseOf rdf:resource="https://linked.art/ns/terms/has_member"/>
+</rdf:Property>
+
 <!-- No inverse, as we don't want instances to be exemplars -->
 <rdf:Property rdf:about="https://linked.art/ns/terms/members_exemplified_by">
     <rdfs:label xml:lang="en">members exemplified by</rdfs:label>
@@ -111,13 +119,20 @@
     <rdfs:range rdf:resource="E1_CRM_Entity"/>
 </rdf:Property>
 
-
-<rdf:Property rdf:about="https://linked.art/ns/terms/member_of">
-    <rdfs:label xml:lang="en">member of</rdfs:label>
+<rdf:Property rdf:about="https://linked.art/ns/terms/members_contained_by">
+    <rdfs:label xml:lang="en">members contained by</rdfs:label>
     <rdfs:comment xml:lang="en"></rdfs:comment>
-    <rdfs:domain rdf:resource="E1_CRM_Entity"/>
+    <rdfs:domain rdf:resource="https://linked.art/ns/terms/Set"/>
+    <rdfs:range rdf:resource="E18_Physical_Thing"/>
+    <owl:inverseOf rdf:resource="https://linked.art/ns/terms/contains_members_of"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="https://linked.art/ns/terms/contains_members_of">
+    <rdfs:label xml:lang="en">contains members of</rdfs:label>
+    <rdfs:comment xml:lang="en"></rdfs:comment>
+    <rdfs:domain rdf:resource="E18_Physical_Thing"/>
     <rdfs:range rdf:resource="https://linked.art/ns/terms/Set"/>
-    <owl:inverseOf rdf:resource="https://linked.art/ns/terms/has_member"/>
+    <owl:inverseOf rdf:resource="https://linked.art/ns/terms/members_contained_by"/>
 </rdf:Property>
 
 <rdfs:Class rdf:about="https://linked.art/ns/terms/Addition">
