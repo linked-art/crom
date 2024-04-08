@@ -79,8 +79,20 @@ def process_classes(dom):
 		subClsL = c.xpath('./rdfs:subClassOf/@rdf:resource', namespaces=NS)
 		if subClsL:
 			# could be multiples
-			subCls = '|'.join(subClsL)
-			for s in subClsL:
+			nsscl = []
+			for sc in subClsL:
+				done = False
+				for (pref,ns) in NS.items():
+					if sc.startswith(ns):
+						sc = sc.replace(ns, "%s:" % pref)
+						done = True
+						nsscl.append(sc)
+						break
+				if not done:
+					nsscl.append(sc)
+
+			subCls = '|'.join(nsscl)
+			for s in nsscl:
 				try:
 					classXHash[s][1] = 3
 				except KeyError:
