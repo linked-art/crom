@@ -452,23 +452,16 @@
   "la:current_permanent_custodian_of": [1,1],
   "la:equivalent": [1,1],
   "la:access_point": [1,1],
+  "la:lang_code": [1,0],
 
   "dc:format": [1,0], 
   "dcterms:conformsTo": [1,1], 
-  "dcterms:subject": [1,1], 
   "rdf:value": [1,0],
-  "rdfs:seeAlso": [1,1], 
   "rdfs:label": [1,0], 
-  "skos:exactMatch": [1,1],
-  "skos:closeMatch": [1,1],
   "skos:narrower": [1,1],
   "skos:broader": [1,1],
-  "skos:hasTopConcept": [1,1],
-  "skos:topConceptOf": [1,1],
-  "skos:inScheme": [1,1],
   "sci:O13_triggers": [1,1],
   "sci:O13i_is_triggered_by": [1,1],
   "sci:O19_encountered_object": [1,1],
-  "sci:O19i_was_object_encountered_at": [1,1],
-  "archaeo:AP25_occurs_during": [1,1]
+  "sci:O19i_was_object_encountered_at": [1,1]
 }
