@@ -713,25 +713,25 @@ def conceptual_only_parts():
 	# Make .part work as expected for Right
 	# which is only propositional and not symbolic, so P148 not P106
 
-	def set_c_part(self, value):
-		self.c_part = value
-	def set_c_part_of(self, value):
-		self.c_part_of = value
+	def set_conceptual_part(self, value):
+		self.conceptual_part = value
+	def set_conceptually_part_of(self, value):
+		self.conceptually_part_of = value
 
 	def rights_getter(self, what):
 		if what == "part":
-			return self.c_part
+			return self.conceptual_part
 		elif what == "part_of":
-			return self.c_part_of
+			return self.conceptually_part_of
 		else:
 			object.__getattr__(self, what)
 
-	Right.set_part = set_c_part
-	Right.set_part_of = set_c_part_of
-	Right._property_name_map['c_part'] = 'part'
-	Right._property_name_map['c_part_of'] = 'part_of'
-	Right._all_properties['part'] = PropositionalObject._all_properties['c_part']
-	Right._all_properties['part_of'] = PropositionalObject._all_properties['c_part_of']
+	Right.set_part = set_conceptual_part
+	Right.set_part_of = set_conceptually_part_of
+	Right._property_name_map['conceptual_part'] = 'part'
+	Right._property_name_map['conceptually_part_of'] = 'part_of'
+	Right._all_properties['part'] = PropositionalObject._all_properties['conceptual_part']
+	Right._all_properties['part_of'] = PropositionalObject._all_properties['conceptually_part_of']
 	Right.__getattr__ = rights_getter
 
 

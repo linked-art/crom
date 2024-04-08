@@ -2,11 +2,27 @@
 
 <rdf:RDF xml:lang="en" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xml:base="http://www.cidoc-crm.org/cidoc-crm/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:la="https://linked.art/ns/terms/" xmlns:schema="http://schema.org/" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:ore="http://www.openarchives.org/ore/terms/" xmlns:geo="http://www.ics.forth.gr/isl/CRMgeo/" xmlns:sci="http://www.ics.forth.gr/isl/CRMsci/" xmlns:dig="http://www.ics.forth.gr/isl/CRMdig/" xmlns:archaeo="http://www.cidoc-crm.org/cidoc-crm/CRMarchaeo/">
 
+<!-- Import Dig's Digital Object -->
     <rdfs:Class rdf:about="http://www.ics.forth.gr/isl/CRMdig/D1_Digital_Object">
         <rdfs:label xml:lang="en">Digital Object</rdfs:label>
         <rdfs:comment>This class comprises identifiable immaterial items that can be represented as sets of bit sequences, such as data sets, e-texts, images, audio or video items, software, etc., and are documented as single units. Any aggregation of instances of D1 Digital Object into a whole treated as single unit is also regarded as an instance of D1 Digital Object.  This means that for instance, the content of a DVD, an XML file on it, and an element of this file, are regarded as distinct instances of D1 Digital Object, mutually related by the P106 is composed of (forms part of) property. A D1 Digital Object does not depend on a specific physical carrier, and it can exist on one or more carriers simultaneously.</rdfs:comment>
         <rdfs:subClassOf rdf:resource="E73_Information_Object"/>
     </rdfs:Class>
+
+
+
+<!-- occurs_during ... if actually needed -->
+
+<!--
+<rdf:Property rdf:about="http://www.cidoc-crm.org/cidoc-crm/CRMarchaeo/AP25_occurs_during">
+  <rdfs:label xml:lang="en">occurs during</rdfs:label>
+  <rdfs:comment>This property identifies a situation in which the entire instance of the E52 Time-Span of an instance of E2 Temporal Entity is within the instance of the E52 Time-Span of another instance of E2 Temporal Entity that starts before and ends after the included temporal entity.</rdfs:comment>
+  <rdfs:domain rdf:resource="E2_Temporal_Entity"/>
+  <rdfs:range rdf:resource="E2_Temporal_Entity"/>
+</rdf:Property>
+-->
+
+<!-- Causal relationship between events -->
 
     <rdf:Property rdf:about="http://www.ics.forth.gr/isl/CRMsci/O13_triggers">
         <rdfs:label xml:lang="en">triggers</rdfs:label>
@@ -22,6 +38,7 @@
         <owl:inverseOf rdf:resource="http://www.ics.forth.gr/isl/CRMsci/O13_triggers" />     
     </rdf:Property>
 
+<!-- Encounter for discoveries -->
 
   <rdfs:Class rdf:about="http://www.ics.forth.gr/isl/CRMsci/S19_Encounter_Event">
     <rdfs:label xml:lang="en">Encounter</rdfs:label>
@@ -105,8 +122,6 @@ Thing that has been found. e.g. The finding (S19) encountered (O19) the 18 arrow
         <rdfs:domain rdf:resource="E73_Information_Object"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 </rdf:Property>
-
-
 
 
 </rdf:RDF>
