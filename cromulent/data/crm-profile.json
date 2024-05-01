@@ -303,7 +303,7 @@
   "P52i_is_current_owner_of": [1,1], 
   "P53_has_former_or_current_location": [0,1],
   "P53i_is_former_or_current_location_of": [0,1],
-  "P54_has_current_permanent_location": [0,1],
+  "P54_has_current_permanent_location": [1,0],
   "P54i_is_current_permanent_location_of": [0,1],
   "P55_has_current_location": [1,0], 
   "P55i_currently_holds": [1,1], 
