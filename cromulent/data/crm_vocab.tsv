@@ -390,6 +390,7 @@ sci:O19i_was_object_encountered_at	property	encountered_by	was encountered at			
 rdfs:label	property	_label	label	A human-readable name for the subject.		E1_CRM_Entity	xsd:string		3	1	0
 skos:narrower	property	narrower	has narrower term	Or is broader term of		E55_Type	E55_Type	skos:broader	10000	1	1
 skos:broader	property	broader	has broader term	Or is narrower term of		E55_Type	E55_Type	skos:narrower	10000	1	1
+skos:notation	property	notation	notation	Identifying string for the resource ; note that Linked Art does not apply a specific data type to the value and everything is just a string.		E1_CRM_Entity	xsd:string		10000	1	0
 dcterms:conformsTo	property	conforms_to	conforms to	Some thing conforms to some standard		E71_Human-Made_Thing	E73_Information_Object		10000	1	1
 dc:format	property	format	format	The media type of the information object		E73_Information_Object	xsd:string		10000	1	0
 la:Payment	class	Payment	Payment	Payment of Money	E7_Activity	1
@@ -406,7 +407,6 @@ la:equivalent	property	equivalent	has equivalent instance	Similar to skos:exactM
 la:paid_amount	property	paid_amount	Paid Amount	The amount paid.		la:Payment	E97_Monetary_Amount		50	1	0
 la:paid_from	property	paid_from	Paid From	Who the payment came from		la:Payment	E39_Actor		51	1	1
 la:paid_to	property	paid_to	Paid To	Who the payment went to		la:Payment	E39_Actor		52	1	1
-la:lang_code	property	lang_code	language code	BCP 47 code for the language		E56_Language	xsd:string		10000	1	0
 la:has_member	property	member	has member			la:Set	E1_CRM_Entity	la:member_of	10001	1	1
 la:member_of	property	member_of	member of			E1_CRM_Entity	la:Set	la:has_member	45	1	1
 la:members_exemplified_by	property	members_exemplified_by	members exemplified by			la:Set	E1_CRM_Entity		10000	1	1

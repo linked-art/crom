@@ -73,17 +73,6 @@
         <rdfs:range rdf:resource="E39_Actor"/>
 </rdf:Property>
 
-
-<!-- Language: add a property for the code, similar to format for information object -->
-
-<rdf:Property rdf:about="https://linked.art/ns/terms/lang_code">
-        <rdfs:label xml:lang="en">language code</rdfs:label>
-        <rdfs:comment xml:lang="en">BCP 47 code for the language</rdfs:comment>
-        <rdfs:domain rdf:resource="E56_Language"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-</rdf:Property>
-
-
 <!-- Set of Things, as potential superclass of Group and Collection -->
 <!-- e.g. an auction lot is not a curated holding, but we need a class for its membership -->
 <!-- Sets can have rights (right to add /remove) and be about subjects (e.g. exhibition) -->

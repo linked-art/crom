@@ -125,7 +125,8 @@ scoped_classes = {
 	"Purchase": "P9",
 	"Set": "set",
 	"Group": "P107",
-	"Person": "P107"
+	"Person": "P107",
+	"DigitalObject": "P106"
 }
 
 other_scoped = {
@@ -156,10 +157,6 @@ for l in lines:
 			part = parts[scoped_classes[ctname]][0]
 			part_of = parts[scoped_classes[ctname]][1]
 
-			# XXX member_of needs to be added to person and Group as Group one
-			# and member_of_set for Set one
-			# then member_of is Set for everything else
-
 			if scoped_classes[ctname] in ['set', 'P107']:
 				context[ctname]['@context'] = {
 					"member": {"@id": part, "@type": "@id", "@container": "@set"},
@@ -169,8 +166,16 @@ for l in lines:
 				context[ctname]['@context'] = {
 					"part": {"@id": part, "@type": "@id", "@container": "@set"},
 					"part_of": {"@id": part_of, "@type": "@id", "@container": "@set"},
-					"member_of": {"@id": parts["set"][1], "@type": "@id", "@container": "@set"}					
+					"member_of": {"@id": parts["set"][1], "@type": "@id", "@container": "@set"}				
 				}
+				if scoped_classes[ctname] != 'P9':
+					# Unnecessary if it's temporal partitioning
+					attr_part = {
+						"@id": "crm:P140i_was_attributed_by", "@type": "@id", "@container": "@set",
+							"@context": { "@id": "crm:P177_assigned_property_of_type", "@type": "@vocab", 
+								"@context": {"part_of": {"@id": part_of}}}}
+					context[ctname]['@context']["attributed_by"] = attr_part	
+
 		# Add other scopes if needed
 		if ctname in other_scoped:
 			context[ctname]['@context'] = other_scoped[ctname]
