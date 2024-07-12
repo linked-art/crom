@@ -1,4 +1,3 @@
-
 import codecs
 import json
 
@@ -10,47 +9,47 @@ except:
     except:
         raise Exception("To run with old pythons you must: easy_install ordereddict")
 
-fn = '../cromulent/data/crm_vocab.tsv'
-fh = codecs.open(fn, 'r', 'utf-8')
-lines = fh.readlines()[1:] # Chomp header line
+fn = "../cromulent/data/crm_vocab.tsv"
+fh = codecs.open(fn, "r", "utf-8")
+lines = fh.readlines()[1:]  # Chomp header line
 fh.close()
 
 context = OrderedDict()
-context['@version'] = 1.1
-context['crm'] = "http://www.cidoc-crm.org/cidoc-crm/"
-context['sci'] = "http://www.ics.forth.gr/isl/CRMsci/"
-context['rdf'] = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-context['rdfs'] = "http://www.w3.org/2000/01/rdf-schema#"
-context['dc'] = "http://purl.org/dc/elements/1.1/"
-context['dcterms'] = "http://purl.org/dc/terms/"
-context['schema'] = "http://schema.org/"
-context['skos'] = "http://www.w3.org/2004/02/skos/core#"
-context['foaf'] = 'http://xmlns.com/foaf/0.1/'
-context['xsd'] = "http://www.w3.org/2001/XMLSchema#"
-context['dig'] = "http://www.ics.forth.gr/isl/CRMdig/"
+context["@version"] = 1.1
+context["crm"] = "http://www.cidoc-crm.org/cidoc-crm/"
+context["sci"] = "http://www.ics.forth.gr/isl/CRMsci/"
+context["rdf"] = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+context["rdfs"] = "http://www.w3.org/2000/01/rdf-schema#"
+context["dc"] = "http://purl.org/dc/elements/1.1/"
+context["dcterms"] = "http://purl.org/dc/terms/"
+context["schema"] = "http://schema.org/"
+context["skos"] = "http://www.w3.org/2004/02/skos/core#"
+context["foaf"] = "http://xmlns.com/foaf/0.1/"
+context["xsd"] = "http://www.w3.org/2001/XMLSchema#"
+context["dig"] = "http://www.ics.forth.gr/isl/CRMdig/"
 context["la"] = "https://linked.art/ns/terms/"
 context["archaeo"] = "http://www.cidoc-crm.org/cidoc-crm/CRMarchaeo/"
 
 ## These are only aliases. The processing is defined by the spec.
-context['id'] = "@id"
-context['type'] = "@type"
+context["id"] = "@id"
+context["type"] = "@type"
 
 extension = OrderedDict()
-extension['@version'] = 1.1
-extension['crm'] = "http://www.cidoc-crm.org/cidoc-crm/"
+extension["@version"] = 1.1
+extension["crm"] = "http://www.cidoc-crm.org/cidoc-crm/"
 
 vocab_properties = ["assigned_property"]
 
 parts = {
-	"P9": ["crm:P9_consists_of", "crm:P9i_forms_part_of"],
-	"P46": ["crm:P46_is_composed_of", "crm:P46i_forms_part_of"],
-	"P106": ["crm:P106_is_composed_of", "crm:P106i_forms_part_of"],
-	"P86": ["crm:P86i_contains", "crm:P86_falls_within"],
-	"P89": ["crm:P89i_contains", "crm:P89_falls_within"],
-	"P148": ["crm:P148_has_component", "crm:P148i_is_component_of"],
-	"skos": ["skos:narrower", "skos:broader"],
-	"set": ["la:has_member", "la:member_of"],
-	"P107": ["crm:P107_has_current_or_former_member", "crm:P107i_is_current_or_former_member_of"]
+    "P9": ["crm:P9_consists_of", "crm:P9i_forms_part_of"],
+    "P46": ["crm:P46_is_composed_of", "crm:P46i_forms_part_of"],
+    "P106": ["crm:P106_is_composed_of", "crm:P106i_forms_part_of"],
+    "P86": ["crm:P86i_contains", "crm:P86_falls_within"],
+    "P89": ["crm:P89i_contains", "crm:P89_falls_within"],
+    "P148": ["crm:P148_has_component", "crm:P148i_is_component_of"],
+    "skos": ["skos:narrower", "skos:broader"],
+    "set": ["la:has_member", "la:member_of"],
+    "P107": ["crm:P107_has_current_or_former_member", "crm:P107i_is_current_or_former_member_of"],
 }
 
 p177_context = {
@@ -72,159 +71,160 @@ p177_context = {
 }
 
 scoped_classes = {
-	"Activity": "P9",
-	"Acquisition": "P9",
-	"TransferOfCustody": "P9",
-	"Production": "P9",
-	"AttributeAssignment": "P9",		
-	"HumanMadeObject": "P46",
-	"LinguisticObject": "P106",
-	"VisualItem": "P106", # XXX This is the symbolic partitioning, not the conceptual partitioning of P149
-	"Identifier": "P106",
-	"TimeSpan": "P86",
-	"Place": "P89",
-	"Type": "skos",
-	"Language": "skos",
-	"Material": "skos",
-	"MeasurementUnit": "skos",
-	"BeginningOfExistence": "P9",
-	"EndOfExistence": "P9",
-	"Creation": "P9",
-	"Formation": "P9",
-	"InformationObject": "P106",
-	"Transformation": "P9",
-	"Joining": "P9",
-	"Leaving": "P9",
-	"PropositionalObject": "P148",
-	"Currency": "skos",
-	"Payment": "P9",
-	"Right": "P148",
-	"Name": "P106",
-	"Birth": "P9",
-	"Death": "P9",
-	"Event": "P9",
-	"Destruction": "P9",
-	"Move": "P9",
-	"Modification": "P9",
-	"Dissolution": "P9",
-	"Period": "P9",
-	"PhysicalThing": "P46",
-	"PhysicalObject": "P46",
-	"PhysicalFeature": "P46",
-	"BiologicalObject": "P46",
-	"Site": "P46",
-	"PhysicalHumanMadeThing": "P46",
-	"HumanMadeFeature": "P46",
-	"Title": "P106",
-	"Inscription": "P106",
-	"Mark": "P106",
-	"Appellation": "P106",
-	"PartAddition": "P9",
-	"PartRemoval": "P9",
-	"SymbolicObject": "P106",
-	"Purchase": "P9",
-	"Set": "set",
-	"Group": "P107",
-	"Person": "P107",
-	"DigitalObject": "P106"
+    "Activity": "P9",
+    "Acquisition": "P9",
+    "TransferOfCustody": "P9",
+    "Production": "P9",
+    "AttributeAssignment": "P9",
+    "HumanMadeObject": "P46",
+    "LinguisticObject": "P106",
+    "VisualItem": "P106",  # XXX This is the symbolic partitioning, not the conceptual partitioning of P149
+    "Identifier": "P106",
+    "TimeSpan": "P86",
+    "Place": "P89",
+    "Type": "skos",
+    "Language": "skos",
+    "Material": "skos",
+    "MeasurementUnit": "skos",
+    "BeginningOfExistence": "P9",
+    "EndOfExistence": "P9",
+    "Creation": "P9",
+    "Formation": "P9",
+    "InformationObject": "P106",
+    "Transformation": "P9",
+    "Joining": "P9",
+    "Leaving": "P9",
+    "PropositionalObject": "P148",
+    "Currency": "skos",
+    "Payment": "P9",
+    "Right": "P148",
+    "Name": "P106",
+    "Birth": "P9",
+    "Death": "P9",
+    "Event": "P9",
+    "Destruction": "P9",
+    "Move": "P9",
+    "Modification": "P9",
+    "Dissolution": "P9",
+    "Period": "P9",
+    "PhysicalThing": "P46",
+    "PhysicalObject": "P46",
+    "PhysicalFeature": "P46",
+    "BiologicalObject": "P46",
+    "Site": "P46",
+    "PhysicalHumanMadeThing": "P46",
+    "HumanMadeFeature": "P46",
+    "Title": "P106",
+    "Inscription": "P106",
+    "Mark": "P106",
+    "Appellation": "P106",
+    "PartAddition": "P9",
+    "PartRemoval": "P9",
+    "SymbolicObject": "P106",
+    "Purchase": "P9",
+    "Set": "set",
+    "Group": "P107",
+    "Person": "P107",
+    "DigitalObject": "P106",
 }
 
-other_scoped = {
-}
+other_scoped = {}
 
 # enforce these in the context
-literal_types = [
-	"xsd:dateTime"
-]
+literal_types = ["xsd:dateTime"]
 # Let these default
-empty_literal_types = [
-	"rdfs:Literal",
-	"xsd:string"
-]
+empty_literal_types = ["rdfs:Literal", "xsd:string"]
 
 
 for l in lines:
-	l = l[:-1] # chomp
-	info= l.split('\t')
-	name = info[0]	
-	if info[1] == "class":
-		# map json key to ontology for @type:@vocab
-		ctname = info[2]
-		if name.startswith("E"):
-			name = "crm:%s" % name		
-		context[ctname] = {"@id": name}
-		if ctname in scoped_classes:
-			part = parts[scoped_classes[ctname]][0]
-			part_of = parts[scoped_classes[ctname]][1]
+    l = l[:-1]  # chomp
+    info = l.split("\t")
+    name = info[0]
+    if info[1] == "class":
+        # map json key to ontology for @type:@vocab
+        ctname = info[2]
+        if name.startswith("E"):
+            name = "crm:%s" % name
+        context[ctname] = {"@id": name}
+        if ctname in scoped_classes:
+            part = parts[scoped_classes[ctname]][0]
+            part_of = parts[scoped_classes[ctname]][1]
 
-			if scoped_classes[ctname] in ['set', 'P107']:
-				context[ctname]['@context'] = {
-					"member": {"@id": part, "@type": "@id", "@container": "@set"},
-					"member_of": {"@id": part_of, "@type": "@id", "@container": "@set"}
-				}
-			else:
-				context[ctname]['@context'] = {
-					"part": {"@id": part, "@type": "@id", "@container": "@set"},
-					"part_of": {"@id": part_of, "@type": "@id", "@container": "@set"},
-					"member_of": {"@id": parts["set"][1], "@type": "@id", "@container": "@set"}				
-				}
-				if scoped_classes[ctname] != 'P9':
-					# Unnecessary if it's temporal partitioning
-					attr_part = {
-						"@id": "crm:P140i_was_attributed_by", "@type": "@id", "@container": "@set",
-							"@context": { "@id": "crm:P177_assigned_property_of_type", "@type": "@vocab", 
-								"@context": {"part_of": {"@id": part_of}}}}
-					context[ctname]['@context']["attributed_by"] = attr_part	
+            if scoped_classes[ctname] in ["set", "P107"]:
+                context[ctname]["@context"] = {
+                    "member": {"@id": part, "@type": "@id", "@container": "@set"},
+                    "member_of": {"@id": part_of, "@type": "@id", "@container": "@set"},
+                }
+            else:
+                context[ctname]["@context"] = {
+                    "part": {"@id": part, "@type": "@id", "@container": "@set"},
+                    "part_of": {"@id": part_of, "@type": "@id", "@container": "@set"},
+                    "member_of": {"@id": parts["set"][1], "@type": "@id", "@container": "@set"},
+                }
+                if scoped_classes[ctname] != "P9":
+                    # Unnecessary if it's temporal partitioning
+                    attr_part = {
+                        "@id": "crm:P140i_was_attributed_by",
+                        "@type": "@id",
+                        "@container": "@set",
+                        "@context": {
+                            "assigned_property": {
+                                "@id": "crm:P177_assigned_property_of_type",
+                                "@type": "@vocab",
+                                "@context": {"part_of": {"@id": part_of}},
+                            }
+                        },
+                    }
+                    context[ctname]["@context"]["attributed_by"] = attr_part
 
-		# Add other scopes if needed
-		if ctname in other_scoped:
-			context[ctname]['@context'] = other_scoped[ctname]
+        # Add other scopes if needed
+        if ctname in other_scoped:
+            context[ctname]["@context"] = other_scoped[ctname]
 
-	else:
-		ctname = info[2]
-		write = not ctname in ['part', 'part_of', 'member', 'member_of']
-		# These need to be added correctly to all parents in the ontology
-		# ... as above
+    else:
+        ctname = info[2]
+        write = not ctname in ["part", "part_of", "member", "member_of"]
+        # These need to be added correctly to all parents in the ontology
+        # ... as above
 
-		dmn = info[6]
-		rng = info[7]
-		mult = info[11] or '1'
-		if ctname in context:
-			print("Already found: %s   (%s vs %s)" % (ctname, context[ctname]['@id'], name))
-		else:
+        dmn = info[6]
+        rng = info[7]
+        mult = info[11] or "1"
+        if ctname in context:
+            print("Already found: %s   (%s vs %s)" % (ctname, context[ctname]["@id"], name))
+        else:
+            if rng:
+                if rng in empty_literal_types:
+                    typ = None
+                elif rng in literal_types:
+                    typ = rng
+                elif ctname in vocab_properties:
+                    typ = "@vocab"
+                else:
+                    typ = "@id"
+            else:
+                typ = None
 
-			if rng:
-				if rng in empty_literal_types:
-					typ = None
-				elif rng in literal_types:
-					typ = rng
-				elif ctname in vocab_properties:
-					typ = "@vocab"
-				else:
-					typ = "@id"
-			else:
-				typ = None
+            if name.startswith("P"):
+                name = "crm:%s" % name
 
-			if name.startswith("P"):
-				name = "crm:%s" % name
+            if write:
+                if not typ:
+                    context[ctname] = {"@id": name}
+                elif mult == "1":
+                    context[ctname] = {"@id": name, "@type": typ, "@container": "@set"}
+                else:
+                    context[ctname] = {"@id": name, "@type": typ}
 
-			if write:
-				if not typ:
-					context[ctname] = {"@id": name}
-				elif mult == '1':
-					context[ctname] = {"@id": name, "@type": typ, "@container":"@set"}
-				else:
-					context[ctname] = {"@id": name, "@type": typ}
+                if ctname == "assigned_property_type":
+                    context["assigned_property_type"]["@context"] = p177_context
 
-				if ctname == "assigned_property_type":
-					context['assigned_property_type']['@context'] = p177_context
-
-			# Otherwise, we're part / part_of, so ignore
-			# print("scoped context: %s: %s on %s" % (ctname, name, dmn))
+            # Otherwise, we're part / part_of, so ignore
+            # print("scoped context: %s: %s on %s" % (ctname, name, dmn))
 
 ctxt = {"@context": context}
 
 outstr = json.dumps(ctxt, indent=2)
-fh = open("../cromulent/data/linked-art.json", 'w')
+fh = open("../cromulent/data/linked-art.json", "w")
 fh.write(outstr)
 fh.close()
