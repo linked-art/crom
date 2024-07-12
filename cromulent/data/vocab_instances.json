@@ -251,8 +251,10 @@
 	"oblong": {"parent": "Shape", "id":"300311843", "label": "Oblong", "req": "recommend"},
 	"upright": {"parent": "Shape", "id":"300343370", "label": "Upright", "req": "recommend"},
 	"arched": {"parent": "Shape", "id":"300126995", "label": "Arched", "req": "recommend"},
+	"rectangular": {"parent": "Shape", "id": "300263831", "label": "rectangular", "req": "recommend"},
 
 	"style impressionism": {"parent": "Style", "id":"300021503", "label": "Impressionism"},
+	"baroque style": {"parent": "Style", "id":"300021147", "label":"Baroque"},
 
 	"male": {"parent": "Gender", "id":"300189559", "label": "Male"},
 	"female": {"parent": "Gender", "id":"300189557", "label": "Female"},	
