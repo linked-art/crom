@@ -266,8 +266,6 @@
 </rdf:Property>
 
 
-
-
 <!-- Acquisition/Transfer of Rights -->
 
 <rdfs:Class rdf:about="https://linked.art/ns/terms/RightAcquisition">
@@ -308,11 +306,9 @@
 </rdf:Property>
 
 
-
-
-<!-- Phase -->
-<!-- This looks like S16 State, but state is only for physical states not social ones like ownership. -->
-<!-- We don't currently use Phase in the profile, but leaving it here for the future -->
+<!-- Phase 
+This looks like S16 State, but state is only for physical states not social ones like ownership
+We don't currently use Phase in the profile, but leaving it here for the future
 
 <rdfs:Class rdf:about="https://linked.art/ns/terms/Phase">
     <rdfs:label xml:lang="en">Phase</rdfs:label>
@@ -392,5 +388,6 @@
     <rdfs:subPropertyOf rdf:resource="P2_has_type"/>
 </rdf:Property>
 
+-->
 
 </rdf:RDF>

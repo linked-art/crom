@@ -1,8 +1,8 @@
 {
 	"P45":  "made_of",
 	"P7i":  "location_of",
-	"P5":   "subState",
-	"P5i":  "subState_of",
+	"P5":   "sub_state",
+	"P5i":  "sub_state_of",
 	"P20i": "specific_purpose_of",
 	"P42":  "assigned_type",
 	"P42i": "type_assigned_by",
