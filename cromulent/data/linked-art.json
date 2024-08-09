@@ -3006,6 +3006,9 @@
     "format": {
       "@id": "dc:format"
     },
+    "Transfer": {
+      "@id": "la:Transfer"
+    },
     "Payment": {
       "@id": "la:Payment",
       "@context": {
@@ -3069,6 +3072,21 @@
     },
     "equivalent": {
       "@id": "la:equivalent",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "transferred": {
+      "@id": "la:transferred",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "transferred_from": {
+      "@id": "la:transferred_from",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "transferred_to": {
+      "@id": "la:transferred_to",
       "@type": "@id",
       "@container": "@set"
     },
