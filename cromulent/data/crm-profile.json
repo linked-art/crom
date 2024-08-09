@@ -112,7 +112,7 @@
   "P108i_was_produced_by": [1,0], 
   "P109_has_current_or_former_curator": [0,1], 
   "P109i_is_current_or_former_curator_of": [0,1], 
-  "P10_falls_within": [0,1], 
+  "P10_falls_within": [1,1], 
   "P10i_contains": [0,1], 
   "P110_augmented": [1,0], 
   "P110i_was_augmented_by": [1,1], 

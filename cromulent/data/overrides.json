@@ -30,6 +30,10 @@
 	"P106i": "part_of",
 	"P127i": "part",
 	"P127": "part_of",
+	"P10": "during",
+	"P10i": "includes",
+	"P183": "before",
+	"P183i": "after",
 
 	"P148": "conceptual_part",
 	"P148i": "conceptually_part_of",
