@@ -41,6 +41,7 @@
 	"kilograms": {"parent": "MeasurementUnit", "id": "300379226", "label": "kilograms", "req": "recommend"},
 	"ounces":{"parent": "MeasurementUnit", "id": "300379229", "label": "ounces"},
 	"pounds": {"parent": "MeasurementUnit", "id": "300379254", "label": "pounds", "req": "recommend"},
+	"tons": {"parent": "MeasurementUnit", "id": "300379228", "label": "tons"},
 	"seconds": {"parent": "MeasurementUnit", "id": "300379239", "label": "seconds", "req": "recommend"},
 	"minutes": {"parent": "MeasurementUnit", "id": "300379240", "label": "minutes", "req": "recommend"},
 	"hours": {"parent": "MeasurementUnit", "id": "300379241", "label": "hours", "req": "recommend"},
