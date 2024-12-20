@@ -356,7 +356,7 @@ class CromulentFactory(object):
 		out = [lines[0]]
 		while lines:
 			l = lines.pop(0)
-			indent = len(re.split('\S', l, 1)[0])
+			indent = len(re.split('[^ \t\n\r]', l, 1)[0])
 			if indent and l.rstrip()[-1] in ['[', '{']:
 				curr = indent
 				temp = []
@@ -367,7 +367,7 @@ class CromulentFactory(object):
 					temp.append(l[curr:])
 					stemp.append(l.strip())
 					l = lines.pop(0)
-					indent = len(re.split('\S', l, 1)[0])					
+					indent = len(re.split('[^ \t\n\r]', l, 1)[0])
 				temp.append(l[curr:])
 				stemp.append(l.lstrip())
 
