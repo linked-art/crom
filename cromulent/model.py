@@ -13,7 +13,10 @@ from json import JSONEncoder
 from collections import OrderedDict
 from collections import namedtuple
 from pyld import jsonld
-from rdflib import ConjunctiveGraph
+try:
+	from rdflib import Dataset as CG
+except:
+	from rdflib import ConjunctiveGraph as CG
 
 KEY_ORDER_DEFAULT = 10000
 LINKED_ART_CONTEXT_URI = "https://linked.art/ns/v1/linked-art.json"
@@ -495,7 +498,7 @@ class CromulentFactory(object):
 			return data
 		else:
 			# Need to pass over to rdflib
-			g = ConjunctiveGraph()
+			g = CG()
 			for (k,v) in min_context.items():
 				if v[0] != "@":
 					g.bind(k, v)
