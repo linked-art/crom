@@ -269,7 +269,7 @@ def add_linked_art_boundary_check():
             Place,
             Period,
             LinguisticObject,
-            Phase,
+            PropositionalObject,
             Set,
             Event,
             DigitalObject,
