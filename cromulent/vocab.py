@@ -108,6 +108,11 @@ def register_instance(name, data):
         t = parent("http://vocab.getty.edu/%s/%s" % (vocab, id))
     t._label = label
     instances[name] = t
+
+    # Languages have a code (e.g. 'en') that goes in `notation`
+    if 'code' in data:
+        t.notation = data['code']
+
     return t
 
 
