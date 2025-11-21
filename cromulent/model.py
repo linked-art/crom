@@ -15,8 +15,10 @@ from collections import namedtuple
 from pyld import jsonld
 try:
 	from rdflib import Dataset as CG
+	_CG_KWARGS = {"default_union": True}
 except:
 	from rdflib import ConjunctiveGraph as CG
+	_CG_KWARGS = {}
 
 KEY_ORDER_DEFAULT = 10000
 LINKED_ART_CONTEXT_URI = "https://linked.art/ns/v1/linked-art.json"
@@ -498,7 +500,7 @@ class CromulentFactory(object):
 			return data
 		else:
 			# Need to pass over to rdflib
-			g = CG()
+			g = CG(**_CG_KWARGS)
 			for (k,v) in min_context.items():
 				if v[0] != "@":
 					g.bind(k, v)
